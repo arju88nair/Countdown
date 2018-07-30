@@ -1,6 +1,6 @@
 import React,{ Component }from 'react';
 import './App.css'
-
+import Clock from './Clock'
 export default class App  extends React.Component{
     constructor(props)
  	{
@@ -15,14 +15,13 @@ export default class App  extends React.Component{
 
      onchangedeadline()
      {
-         console.log(this.state)
          this.setState({deadline:this.state.newDeadline})
      }
  render(){
   return(
    <div className="App">
    <div className="App-title">Coundown to {this.state.deadline}</div>
-  
+  <Clock deadline={this.state.deadline}/>
    <div>
    	<input placeholder="Here fucker!"onChange={event => this.setState({newDeadline:event.target.value})}></input>
    	<button onClick={()=> this.onchangedeadline()}>Blah</button>

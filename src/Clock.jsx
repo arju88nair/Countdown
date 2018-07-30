@@ -6,7 +6,7 @@ class Clock extends React.Component {
     {
         super(props);
         this.state={
-days:0,
+Days:0,
 Hours:0,
 Minutes:0,
 Seconds:0
@@ -14,14 +14,24 @@ Seconds:0
 
     }
 
+    getTimeUntil(deadline){
+        const time=Date.parse(deadline)-Date.parse(new Date())
+        const seconds = Math.floor((time/1000) % 60)
+        const minutes = Math.floor((time/1000/60) % 60)
+        const hours = Math.floor((time/(1000*60*60)) % 24)
+        const days = Math.floor((time/(1000*60*60*24)))
+        console.log(seconds+"Sec"+minutes+"min"+hours+"hours"+days)
+    }
+
 
     render() {
+        this.getTimeUntil(this.props.deadline)
         return (
             <div>
-                <div className="clock-Days">1 Day</div>
-                <div className="clock-Hours">2 Hours</div>
-                <div className="clock-Minutes">4 Minutes</div>
-                <div className="clock-Seconds">6 Seconds</div>
+                <div className="clock-Days">{this.state.Days} days</div>
+                <div className="clock-Hours">{this.state.Hours} Hours</div>
+                <div className="clock-Minutes">{this.state.Minutes} Minutes</div>
+                <div className="clock-Seconds">{this.state.Seconds} Seconds</div>
             </div>
         );
     }
