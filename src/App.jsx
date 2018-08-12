@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deadline: 'December 25, 2017',
+      deadline: 'December 25, 2018',
       newDeadline: ''
     }
   }
@@ -25,7 +25,7 @@ class App extends Component {
         <Clock
           deadline={this.state.deadline}
         />
-        <Form inline>
+        <Form inline className="form">
           <FormControl
             className="Deadline-input"
             placeholder='new date'

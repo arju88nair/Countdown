@@ -8,7 +8,8 @@ class Clock extends Component {
       days: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
+      errorDate:'',
     }
   }
 
@@ -25,11 +26,16 @@ class Clock extends Component {
   }
 
   getTimeUntil(deadline) {
-    const time = Date.parse(deadline) - Date.parse(new Date());
-    const seconds = Math.floor((time/1000) % 60);
-    const minutes = Math.floor((time/1000/60) % 60);
-    const hours = Math.floor(time/(1000*60*60) % 24);
-    const days = Math.floor(time/(1000*60*60*24));
+    let time = Date.parse(deadline) - Date.parse(new Date());
+    if(isNaN(time))
+    {
+      alert("Not a proper date");
+      location.reload();
+    }
+    let seconds = Math.floor((time/1000) % 60);
+    let minutes = Math.floor((time/1000/60) % 60);
+    let hours = Math.floor(time/(1000*60*60) % 24);
+    let days = Math.floor(time/(1000*60*60*24));
 
     this.setState({days, hours, minutes, seconds});
   }
